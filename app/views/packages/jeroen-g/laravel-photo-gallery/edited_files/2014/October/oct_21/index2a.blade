@@ -1,0 +1,47 @@
+@section('content')
+
+	<div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <b>{{ Lang::get('gallery::gallery.overview') . ' ' . Lang::choice('gallery::gallery.album', 2) }}</b>
+            </div>
+            <div class="panel-body">
+                @if ($allAlbums->count())
+                    <dl class="dl-horizontal">
+                        <!-- Add this div class to make the table responsive -->
+                        <div class = "table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Colors</th>
+                                    <th>Origin</th>
+                                    <th>Pattern</th>
+                                    <th>Application/Description</th>
+                                    <th>Active</th>
+                                </tr>        
+                		@foreach($allAlbums as $album)
+                        <tr>
+                			 <td>{{ $album->album_id }}</b></td>
+                			 <td>{{ $album->album_name }}</td>
+                             <td>{{ $album->album_type }}</td>
+                             <td>{{ $album->album_color }}</td>
+                             <td>{{ $album->album_origin }}</td>
+                             <td>{{ $album->album_pattern }}</td>
+                             <td><b>{{ link_to_route("gallery.album.show", 'Edit', array($album->album_id)) }}</b></td>
+                        </tr>     
+                        @endforeach
+                            </table>
+                        </div>    
+
+
+                    </dl>
+            	@else
+                	<b>{{ Lang::get('gallery::gallery.none') . Lang::choice('gallery::gallery.album', 2) }}</b>
+            	@endif
+            </div>
+        </div>
+    </div>
+    
+@stop

@@ -1,0 +1,114 @@
+@section('content')
+
+    <!--This view displays a particular album's overview.  A table is still displayed
+    along with photos from the album.  Several links /routes are defined for 
+    editing the album, deleting the album, editing the photos and 
+    going back to 'index.blade.php'  -->
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <!-- Create a link that takes the user back to the home page 'index.blade.php' -->
+
+            <b>{{ $album->album_name . ' (id:' . $album->album_id . ')' }}</b><br />
+            <b> {{ link_to_route('gallery', 'Go Back To Stone List') }}   </b>
+            <div class="pull-right">
+
+                <!-- Create a link for deleting the album -->
+                {{ Form::open(array('route' => array("gallery.album.destroy", $album->album_id))) }}
+
+                    <!-- Create a link for editing the album.  
+                    The button code is below.  -->
+                    {{ link_to_route("gallery.album.edit", Lang::get('gallery::gallery.edit'), array('id' => $album->album_id), array('class' => 'btn btn-info')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit(Lang::get('gallery::gallery.delete'), array('class' => 'btn btn-danger')) }}
+                {{ Form::close() }}
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+
+
+            <div class ="table-responsive">    
+            <table class="table">    
+                <!-- Display the album information in a table
+                Very similar to the one in 'index.blade.php'.  -->    
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Colors</th>
+                    <th>Origin</th>
+                    <th>Pattern</th>
+                    <th>Application/Description</th>
+                </tr>    
+
+                <tr>
+                    <td>{{ $album->album_id }}</td>
+                    <td>{{ $album->album_name }}</td>
+                    <td>{{ $album->album_type }}</td>
+                    <td><li>{{ $album->album_color_black}}</li>
+                        <li>{{ $album->album_color_blue }}</li> 
+                        <li>{{ $album->album_color_brown }}</li>
+                        <li>{{ $album->album_color_gold }}</li>
+                        <li>{{ $album->album_color_gray }}</li>
+                        <li>{{ $album->album_color_green }}</li> 
+                        <li>{{ $album->album_color_red }}</li> 
+                        <li>{{ $album->album_color_white }}</li>
+                    </td>
+                    <td>{{ $album->album_origin }}</td>
+                    <td>{{ $album->album_pattern }}</td>
+                    <td>
+                        <li>{{ $album->album_application_kitchen}}</li>
+                        <li>{{ $album->album_application_bathroom }}</li> 
+                        <li>{{ $album->album_application_fireplace }}</li>
+                        <li>{{ $album->album_application_floor }}</li>
+                        <li>{{ $album->album_application_outdoor }}</li>    
+                    </td>    
+                </tr>
+            </table>
+            </div>
+
+            <!-- If photos exist then display them.  -->
+
+            @if ($albumPhotos->count())   
+
+            <!--Create an array for all the photos in a '@foreach' statement. -->
+
+            @foreach($albumPhotos as $photo)
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                            <!-- Display the photo's name and its image.
+                            The 'link_to_route' statement below uses
+                            'PhotosController.php' to show each photo's image. 
+                            The 'Edit Photo' image takes the user to the
+                            'photo.blade.php' view. -->
+
+                            <b>{{ $photo->photo_name }}</b>
+                            <b>{{ link_to_route("gallery.album.photo.show", 'Edit Photo', array($photo->album_id, $photo->photo_id)) }}</b>
+                        </div>
+                        <div class="panel-body">
+                            <img class="img" src='{{ asset("uploads/photos/" . $photo->photo_path ) }}' />
+                        </div>
+                    </div>
+                </div>
+    		@endforeach
+
+            </div>
+        </div>
+        <div class="panel-footer clearfix">
+
+            <!--Code below is not necessary but it doesn't break anything.  -->
+
+    	   <?php echo $albumPhotos->links(); ?>
+        </div>
+    	@else
+        	{{ Lang::get('gallery::gallery.none') . Lang::choice('gallery::gallery.photo', 2) }}
+            </div>
+    	@endif
+
+
+    </div>
+@stop

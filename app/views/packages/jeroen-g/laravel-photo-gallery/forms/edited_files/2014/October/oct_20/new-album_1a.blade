@@ -1,0 +1,44 @@
+{{ Form::open(array('route' => 'gallery.album.store', 'method' => 'POST')) }}
+
+    <div class="form-group">
+        {{ Form::label('album_name', Lang::get('gallery::gallery.name') . ':') }}
+        {{ Form::text('album_name', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_description', Lang::get('gallery::gallery.desc') . ':') }}
+        {{ Form::text('album_description', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_type', 'Type:') }}
+        {{ Form::select('album_type', array('M' => 'Marble', 'G' => 'Granite', 'O' => 'Onyx', 'L' => 'Limestone', 'S' => 'Slate', 'Q' => 'Quartzite', 'OT' => 'Other', 'SP' => 'Soapstone', 'T' => 'Travertine', 'CS' => 'Caesar Stone', 'QBC' => 'Quartz Based Ceramic', 'GM' => 'Gemstone', 'GS' => 'Granite*', 'MS' => 'Marble*', 'A' => 'Agglomerate', 'GL' => 'Glass', 'QU' => 'Quantra', 'SM' => 'Santa Margherita', 'AL' => 'Antolini Luigi', 'MC' => 'Marble.com', 'PT' => 'Porcelain Tile', 'OT' => 'Onyx Tile', 'LST' => 'Lava Stone Tile') ,array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_color', 'Color:') }}
+        {{ Form::text('album_color', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_origin', 'Origin:') }}
+        {{ Form::select('album_origin', array('AF' => 'Africa', 'AG' => 'Angola', 'AR' => 'Argentina', 'AUS' => 'Australia', 'AST' => 'Austra', 'BG' => 'Belgium', 'BRI' => 'Braislien', 'BRA' => 'Brazil', 'BUL' => 'Bulgaria', 'CAN' => 'Canada', 'CH' => 'China', 'CR' => 'Croatia', 'CU' => 'Cuba', 'CZR' => 'Czech Republic', 'EGY' => 'Egypt', 'ENG' => 'Engineered', 'ETH' => 'Ethiopia', 'FIN' => 'Finland', 'FRA' => 'France', 'GEO' => 'Georgia', 'GER' => 'Germany', 'GB' => 'Great Britain', 'GR' => 'Greece', 'GUA' => 'Guatemala', 'IND' => 'India', 'IR' => 'Iran', 'IRE' => 'Ireland', 'ISR' => 'Israel', 'IT' => 'Italy', 'JP' => 'Japan', 'KAS' => 'Kasahstan', 'MAC' => 'Macedonia', 'MAD' => 'Madagascar', 'MAL' => 'Malayasia', 'MEX' => 'Mexico', 'MON' => "Mongolia", 'MOR' => 'Morocco', 'MOZ' => 'Mozambique', 'NAM' => 'Namibia', 'NG' => 'Nigeria', 'NOR' => 'Norway', 'OT' => 'Other', 'PAK' => 'Pakistan', 'PE' => 'Peru', 'PO' => 'Poland', 'POR' => 'Portugal', 'RUS' => 'Russia', 'SA' => 'Saudi Arabia', 'SWE' => 'Sweden', 'SWZ' => 'Switzerland', 'TU' => 'Tunisia', 'TUR' => 'Turkey', 'UKR' => 'Ukraine', 'URU' => 'Uruguay', 'US' => 'USA', 'VZ' => 'Venezuela', 'VT' => 'Vietnam', 'YG' => 'Yugoslavia', 'ZA' => 'Zambia', 'ZB' => 'Zimbabwe') ,array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_pattern', 'Pattern:') }}
+        {{ Form::select('album_pattern', array('VE' => 'Veins', 'SP' => 'Speckles', 'SC' => 'Solid Color', ) ,array('class' => 'form-control')) }}
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        {{ Form::submit(Lang::get('gallery::gallery.submit'), array('class' => 'btn btn-primary')) }}
+    </div>
+
+{{ Form::close() }}
+

@@ -1,0 +1,39 @@
+{{ Form::open(array('route' => 'gallery.album.store', 'method' => 'POST')) }}
+
+    <div class="form-group">
+        {{ Form::label('album_name', 'Add Stone' . ':') }}
+        {{ Form::text('album_name', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_description', 'Stone Description' . ':') }}
+        {{ Form::text('album_description', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_type', 'Type:') }}
+        {{ Form::select('album_type', array('Marble' => 'Marble', 'Granite' => 'Granite', 'Onyx' => 'Onyx', 'Limestone' => 'Limestone', 'Slate' => 'Slate', 'Quartzite' => 'Quartzite', 'Other' => 'Other', 'Soapstone' => 'Soapstone', 'Travertine' => 'Travertine', 'Caesar Stone' => 'Caesar Stone', 'Quartz Based Ceramic' => 'Quartz Based Ceramic', 'Gemstone' => 'Gemstone', 'Granite*' => 'Granite*', 'Marble*' => 'Marble*', 'Agglomerate' => 'Agglomerate', 'Glass' => 'Glass', 'Quantra' => 'Quantra', 'Santa Margherita' => 'Santa Margherita', 'Antolini Luigi' => 'Antolini Luigi', 'Marble.com' => 'Marble.com', 'Porcelain Tile' => 'Porcelain Tile', 'Onyx Tile' => 'Onyx Tile', 'Lava Stone Tile' => 'Lava Stone Tile') ,array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_color', 'Color:') }}
+        {{ Form::select('album_color', array('Black' => 'Black', 'Blue' => 'Blue', 'Brown' => 'Brown', 'Gold' => 'Gold', 'Gray' => 'Gray', 'Green' => 'Green', 'Red' => 'Red', 'White' => 'White'), array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_origin', 'Origin:') }}
+        {{ Form::select('album_origin', array('Africa' => 'Africa', 'Angola' => 'Angola', 'Argentina' => 'Argentina', 'Australia' => 'Australia', 'Austria' => 'Austria', 'Belgium' => 'Belgium', 'Braislien' => 'Braislien', 'Brazil' => 'Brazil', 'Bulgaria' => 'Bulgaria', 'Canada' => 'Canada', 'China' => 'China', 'Croatia' => 'Croatia', 'Cuba' => 'Cuba', 'Czech Republic' => 'Czech Republic', 'Egypt' => 'Egypt', 'Engineered' => 'Engineered', 'Ethiopia' => 'Ethiopia', 'Finland' => 'Finland', 'France' => 'France', 'Georgia' => 'Georgia', 'Germany' => 'Germany', 'Great Britain' => 'Great Britain', 'Greece' => 'Greece', 'Guatemala' => 'Guatemala', 'India' => 'India', 'Iran' => 'Iran', 'Ireland' => 'Ireland', 'Israel' => 'Israel', 'Italy' => 'Italy', 'Japan' => 'Japan', 'Kasahstan' => 'Kasahstan', 'Macedonia' => 'Macedonia', 'Madagascar' => 'Madagascar', 'Malaysia' => 'Malayasia', 'Mexico' => 'Mexico', 'Mongolia' => "Mongolia", 'Morocco' => 'Morocco', 'Mozambique' => 'Mozambique', 'Nambia' => 'Namibia', 'Nigeria' => 'Nigeria', 'Norway' => 'Norway', 'Other' => 'Other', 'Pakistan' => 'Pakistan', 'Peru' => 'Peru', 'Poland' => 'Poland', 'Portugal' => 'Portugal', 'Russia' => 'Russia', 'Saudi Arabia' => 'Saudi Arabia', 'Sweden' => 'Sweden', 'Switzerland' => 'Switzerland', 'Tunisia' => 'Tunisia', 'Turkey' => 'Turkey', 'Ukraine' => 'Ukraine', 'Uruguay' => 'Uruguay', 'USA' => 'USA', 'Venezuela' => 'Venezuela', 'Vietnam' => 'Vietnam', 'Yugoslavia' => 'Yugoslavia', 'Zambia' => 'Zambia', 'Zimbabwe' => 'Zimbabwe') ,array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('album_pattern', 'Pattern:') }}
+        {{ Form::select('album_pattern', array('Veins' => 'Veins', 'Speckles' => 'Speckles', 'Solid Color' => 'Solid Color', ) ,array('class' => 'form-control')) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ Form::submit(Lang::get('gallery::gallery.submit'), array('class' => 'btn btn-primary')) }}
+    </div>
+
+{{ Form::close() }}
+
